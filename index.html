@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rester Hotels | Luxury Hospitality Across India</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #c19a6b; /* Luxury gold */
+      --primary-dark: #a67c52;
+      --primary-light: #d4b483;
+      --secondary: #1a1a1a; /* Dark charcoal */
+      --light: #f8f5f2; /* Cream white */
+      --white: #ffffff;
+      --gray: #e8e8e8;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--secondary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-color: var(--light);
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    
+    /* Header Styles */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--secondary);
+      padding: 1.5rem 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: var(--transition);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      backdrop-filter: blur(10px);
+    }
+    
+    header.scrolled {
+      padding: 1rem 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    
+    .logo img {
+      height: 42px;
+      margin-right: 0.8rem;
+      transition: var(--transition);
+    }
+    
+    .logo:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Navigation */
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 2.5rem;
+      position: relative;
+    }
+    
+    nav ul li a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      bottom: -5px;
+      left: 0;
+      transition: var(--transition);
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      min-height: 800px;
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 0 2rem;
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(transparent, var(--light));
+      z-index: 1;
+    }
+    
+    .hero-content {
+      max-width: 900px;
+      animation: fadeIn 1.2s ease;
+      position: relative;
+      z-index: 2;
+      padding-bottom: 100px;
+    }
+    
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: 2px solid var(--primary);
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .btn:hover {
+      background: transparent;
+      color: var(--white);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--white);
+      margin-left: 1.5rem;
+    }
+    
+    .btn-outline:hover {
+      background: var(--white);
+      color: var(--primary);
+    }
+    
+    /* Sections */
+    section {
+      padding: 8rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    
+    .section-title h2 {
+      font-size: 3rem;
+      color: var(--primary-dark);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .section-title p {
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+      color: #666;
+    }
+    
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-image {
+      flex: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    
+    .about-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0));
+      z-index: 1;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      min-height: 500px;
+    }
+    
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Brands Section */
+    .brands {
+      background-color: var(--white);
+      padding: 6rem 0;
+    }
+    
+    .brands-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .brand-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 3rem 2.5rem;
+      width: 300px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .brand-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .brand-card i {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .brand-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+    
+    .brand-card p {
+      color: #666;
+      font-size: 1rem;
+    }
+    
+    /* Hotels Section */
+    .hotels {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+    }
+    
+    .hotel-card {
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .hotel-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .hotel-image {
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .hotel-image::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+      z-index: 1;
+    }
+    
+    .hotel-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    
+    .hotel-card:hover .hotel-image img {
+      transform: scale(1.1);
+    }
+    
+    .hotel-info {
+      padding: 2rem;
+    }
+    
+    .hotel-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary-dark);
+    }
+    
+    .hotel-info p {
+      margin-bottom: 1.5rem;
+      color: #666;
+      font-size: 1rem;
+    }
+    
+    .hotel-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--gray);
+    }
+    
+    .rating {
+      color: #FFC107;
+      font-size: 1.1rem;
+    }
+    
+    .price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+    
+    /* Inquiry Form Section */
+    .inquiry {
+      background-color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .inquiry::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: var(--primary);
+      border-radius: 50%;
+      top: -200px;
+      right: -200px;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    .inquiry-form {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 4rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 2rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Montserrat', sans-serif;
+      transition: var(--transition);
+      background: var(--light);
+      border: none;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--primary-light);
+    }
+    
+    .form-group textarea {
+      height: 180px;
+      resize: vertical;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+    }
+    
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      gap: 5rem;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--primary-dark);
+    }
+    
+    .contact-info p {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      font-size: 1.1rem;
+    }
+    
+    .contact-info i {
+      margin-right: 1rem;
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-top: 3px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary-dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--secondary);
+      color: var(--white);
+      padding: 6rem 0 2rem;
+      position: relative;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 10px;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+    }
+    
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+    
+    .footer-col h3 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--white);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+      bottom: 0;
+      left: 0;
+    }
+    
+    .footer-col p, .footer-col a {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.2rem;
+      display: block;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+    
+    .footer-col a:hover {
+      color: var(--primary);
+      padding-left: 8px;
+    }
+    
+    /* Footer Social Links */
+    .footer-social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    
+    .footer-social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border-radius: 50%;
+      transition: var(--transition);
+      font-size: 1.1rem;
+    }
+    
+    .footer-social-links a:hover {
+      background: var(--primary);
+      color: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .copyright {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255,255,255,0.7);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .hero h1 {
+        font-size: 3.8rem;
+      }
+      
+      section {
+        padding: 6rem 2rem;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .about-content,
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .about-image {
+        order: -1;
+      }
+      
+      .form-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 700px;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+      }
+      
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        margin: 1.5rem 0;
+      }
+      
+      nav ul li a {
+        font-size: 1.2rem;
+        color: var(--secondary);
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hotels {
+        grid-template-columns: 1fr;
+      }
+      
+      .inquiry-form {
+        padding: 2.5rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .footer-links {
+        margin-top: 1.5rem;
+      }
+      
+      .footer-links a {
+        margin: 0 0.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .btn-outline {
+        margin-left: 0;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .inquiry-form {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="header-container">
+      <a href="#home" class="logo">
+        <img src="logo.png" alt="Rester Hotels">
+        <span>Rester Hotels</span>
+      </a>
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#hotels">Our Hotels</a></li>
+          <li><a href="#brands">Our Brands</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#partner">Partner With Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Experience Unparalleled Luxury</h1>
+      <p>Discover our exquisite collection of premium hotels across India, where timeless elegance meets contemporary comfort.</p>
+      <div class="btn-container">
+        <a href="#hotels" class="btn">Explore Hotels</a>
+        <a href="#inquiry" class="btn btn-outline">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hotels Section -->
+  <section id="hotels">
+    <div class="section-title">
+      <h2>Our Premium Properties</h2>
+      <p>Each Rester Hotels property is carefully curated to offer an exceptional hospitality experience</p>
+    </div>
+    <div class="hotels">
+      <!-- Hotel 1 -->
+      <div class="hotel-card">
+        <div class="hotel-image">
+          <img src="rester1.png" alt="Rester Select Jodhpur" loading="lazy">
+        </div>
+        <div class="hotel-info">
+          <h3>Rester Select, Jodhpur</h3>
+          <p>Located just 5 minutes from Jodhpur Airport with 51 luxuriously appointed rooms and full business facilities.</p>
+          <div class="hotel-meta">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>4.5</span>
+            </div>
+            <div class="price">Contact: +91 9983218379</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Hotel 2 -->
+      <div class="hotel-card">
+        <div class="hotel-image">
+          <img src="chakan1.png" alt="Rester Select Chakan" loading="lazy">
+        </div>
+        <div class="hotel-info">
+          <h3>Rester Select, Chakan</h3>
+          <p>Pune's premier luxury business hotel with state-of-the-art conference facilities and premium amenities.</p>
+          <div class="hotel-meta">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>4.2</span>
+            </div>
+            <div class="price">Contact: +91 9983218380</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Hotel 3 -->
+      <div class="hotel-card">
+        <div class="hotel-image">
+          <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Rester Xpress Itarasi" loading="lazy">
+        </div>
+        <div class="hotel-info">
+          <h3>Rester Xpress, Itarasi</h3>
+          <p>Sophisticated transit hotel near railway station featuring 24-hour gourmet dining and express services.</p>
+          <div class="hotel-meta">
+            <div class="rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>4.0</span>
+            </div>
+            <div class="price">Contact: +91 9983218381</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Brands Section -->
+  <section id="brands" class="brands">
+    <div class="section-title">
+      <h2>Our Distinct Brands</h2>
+      <p>Each brand under the Rester Hotels umbrella offers a unique hospitality experience</p>
+    </div>
+    <div class="brands-container">
+      <div class="brand-card">
+        <i class="fas fa-crown"></i>
+        <h3>Rester Select</h3>
+        <p>Our flagship luxury brand offering premium accommodations with world-class amenities and personalized service for the discerning traveler.</p>
+      </div>
+      <div class="brand-card">
+        <i class="fas fa-bolt"></i>
+        <h3>Rester Xpress</h3>
+        <p>Smart, efficient hotels designed for modern travelers who value comfort and convenience without compromising on quality.</p>
+      </div>
+      <div class="brand-card">
+        <i class="fas fa-umbrella-beach"></i>
+        <h3>Rester Retreats</h3>
+        <p>Coming soon - Exclusive boutique resorts in breathtaking locations for those seeking tranquility and rejuvenation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-title">
+      <h2>Our Story</h2>
+      <p>Discover the legacy behind India's most trusted hospitality brand</p>
+    </div>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="Rester Hotel" loading="lazy">
+      </div>
+      <div class="about-text">
+        <p>Founded in 2015 with a vision to redefine hospitality in India, Rester Hotels has grown from a single property to a nationally recognized brand with multiple awards for excellence in service and guest satisfaction.</p>
+        <p>Our philosophy centers around creating spaces that feel like home while delivering service that anticipates every need. We combine contemporary design with traditional Indian hospitality values to create memorable experiences.</p>
+        <p>With properties in Jodhpur, Chakan Pune, Itarasi, and Indore, and three new developments underway, we're committed to expanding our footprint while maintaining the highest standards of quality and service that our guests expect.</p>
+        <p>Every Rester Hotels property reflects our core values of integrity, excellence, and genuine care for our guests, making us the preferred choice for business and leisure travelers alike.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry Form Section -->
+  <section id="inquiry" class="inquiry">
+    <div class="section-title">
+      <h2>Plan Your Stay</h2>
+      <p>Let us create a personalized experience for your next visit</p>
+    </div>
+    <form class="inquiry-form" action="#" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="checkin">Check-in Date</label>
+          <input type="date" id="checkin" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="checkout">Check-out Date</label>
+          <input type="date" id="checkout" required>
+        </div>
+        <div class="form-group">
+          <label for="property">Select Property</label>
+          <select id="property" required>
+            <option value="">Select a property</option>
+            <option value="jodhpur">Rester Select, Jodhpur</option>
+            <option value="chakan">Rester Select, Chakan Pune</option>
+            <option value="itarasi">Rester Xpress, Itarasi</option>
+            <option value="indore">Rester Select, Indore</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Special Requests</label>
+        <textarea id="message" placeholder="Tell us about any special requirements or preferences"></textarea>
+      </div>
+      <button type="submit" class="btn">Submit Reservation Request</button>
+    </form>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="section-title">
+      <h2>Connect With Us</h2>
+      <p>Our team is always ready to assist with your hospitality needs</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Corporate Headquarters</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Terminal 9 Tower, 701, 7th Floor,<br>Nehru Road, Vile Parle East,<br>Adjacent to Domestic Airport,<br>Mumbai - 400099, India</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@resterhotels.in">info@resterhotels.in</a></p>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-globe"></i> <a href="https://www.resterhotels.in" target="_blank">www.resterhotels.in</a></p>
+        
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <h3>Quick Contact</h3>
+        <form>
+          <div class="form-group">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-subject">Subject</label>
+            <input type="text" id="contact-subject" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Section -->
+  <section id="partner" class="inquiry" style="background-color: var(--primary-light);">
+    <div class="section-title">
+      <h2>Partner With Us</h2>
+      <p>Join our growing network of hospitality professionals and property owners</p>
+    </div>
+    <form class="inquiry-form" action="#" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="partner-name">Your Name</label>
+          <input type="text" id="partner-name" required>
+        </div>
+        <div class="form-group">
+          <label for="partner-company">Company Name</label>
+          <input type="text" id="partner-company">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="partner-email">Email</label>
+          <input type="email" id="partner-email" required>
+        </div>
+        <div class="form-group">
+          <label for="partner-phone">Phone Number</label>
+          <input type="tel" id="partner-phone" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="partner-type">Partnership Interest</label>
+        <select id="partner-type" required>
+          <option value="">Select an option</option>
+          <option value="franchise">Franchise Opportunities</option>
+          <option value="management">Management Contracts</option>
+          <option value="investment">Investment Opportunities</option>
+          <option value="supplier">Supplier/Vendor Partnership</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="partner-message">Tell Us About Your Proposal</label>
+        <textarea id="partner-message" required></textarea>
+      </div>
+      <button type="submit" class="btn" style="background-color: var(--secondary); border-color: var(--secondary);">Submit Partnership Request</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h3>Rester Hotels</h3>
+          <p>Redefining luxury hospitality across India with properties that combine contemporary design with timeless elegance.</p>
+          <div class="footer-social-links">
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <a href="#home">Home</a>
+          <a href="#hotels">Our Hotels</a>
+          <a href="#brands">Our Brands</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
+          <a href="#partner">Partner With Us</a>
+        </div>
+        <div class="footer-col">
+          <h3>Our Brands</h3>
+          <a href="#">Rester Select</a>
+          <a href="#">Rester Xpress</a>
+          <a href="#">Rester Retreats</a>
+          <a href="#">Rester Living</a>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Terminal 9 Tower, Mumbai</p>
+          <p><i class="fas fa-envelope"></i> reservations@resterhotels.com</p>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-globe"></i> www.resterhotels.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2025 Rester Hotels Pvt Ltd. All Rights Reserved.
+        </div>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms.html">Terms & Conditions</a>
+          <a href="sitemap.html">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        if (document.querySelector('nav ul').classList.contains('show')) {
+          document.querySelector('nav ul').classList.remove('show');
+        }
+      });
+    });
+    
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('show');
+      this.innerHTML = document.querySelector('nav ul').classList.contains('show') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Form submission handling
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        alert('Thank you for your submission. We will contact you shortly.');
+        this.reset();
+      });
+    });
+    
+    // Animation on scroll
+    const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.section-title, .brand-card, .hotel-card');
+      
+      elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementPosition < windowHeight - 100) {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Set initial state for animated elements
+    document.querySelectorAll('.section-title, .brand-card, .hotel-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    // Run once on load
+    animateOnScroll();
+    
+    // Then run on scroll
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>
